@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="icon.PNG" />
+    <title>Quranfy - مشغل القرآن الكريم</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Tajawal:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <style>
+      body {
+        font-family: "Tajawal", sans-serif;
+        background: linear-gradient(135deg, #1a3e2f 0%, #0d2b21 100%);
+        color: #f8fafc;
+      }
+      .quran-font {
+        font-family: "Scheherazade New", serif;
+      }
+      .floating {
+        animation: floating 3s ease-in-out infinite;
+      }
+      @keyframes floating {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(74, 222, 128, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(74, 222, 128, 0);
+        }
+      }
+      .fade-in {
+        animation: fadeIn 1.5s ease-in;
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .slide-in {
+        animation: slideIn 1s ease-out;
+      }
+      @keyframes slideIn {
+        0% {
+          transform: translateX(100px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      .surrah-card {
+        transition: all 0.3s ease;
+      }
+      .surrah-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      }
+      .reader-card {
+        transition: all 0.3s ease;
+      }
+      .reader-card:hover {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-green-900 to-emerald-900 shadow-lg">
+      <div
+        class="container mx-auto px-4 py-6 flex justify-start items-center gap-40"
+      >
+        <div class="flex items-center space-x-2 space-x-reverse">
+          <div
+            class="w-12 h-12 rounded-full flex items-center justify-center text-white"
+          >
+            <img src="icon.PNG" alt="Quranfy Logo" class="w-12 h-12" />
+          </div>
+          <h1 class="text-2xl font-bold text-white inline-block r-10">
+            Quranfy
+          </h1>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16 bg-gradient-to-b from-emerald-900 to-green-900">
+      <div
+        class="container mx-auto px-4 flex flex-col md:flex-row items-center"
+      >
+        <div class="md:w-1/2 mb-10 md:mb-0 fade-in">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">
+            استمع إلى القرآن الكريم بصوت أجمل القراء
+          </h2>
+          <p class="text-xl mb-8 text-emerald-100">
+            تطبيق Quranfy يمنحك تجربة فريدة للاستماع إلى القرآن بتلاوات عذبة
+            وواجهة سهلة الاستخدام
+          </p>
+          <div class="flex space-x-4 space-x-reverse">
+            <button
+              class="bg-emerald-500 hover:bg-emerald-400 text-white px-6 py-3 rounded-lg text-lg font-medium transition flex items-center pulse"
+            >
+              <i class="fas fa-download ml-2"></i> حمل التطبيق الأن
+              <img src="windows.png" alt="windows Logo" class="w-8 h-8 mr-2" />
+            </button>
+          </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <div class="relative">
+            <div
+              class="w-80 h-80 bg-emerald-800/30 rounded-full absolute -top-10 -right-10 floating"
+            ></div>
+            <div
+              class="w-80 h-80 bg-emerald-700/20 rounded-full absolute -bottom-10 -left-10 floating"
+              style="animation-delay: 1.5s"
+            ></div>
+            <div class="rounded-full">
+              <img
+                src="software.png"
+                alt="software"
+                class="w-full rounded-xl z-[999999] relative"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gradient-to-b from-green-900 to-emerald-900">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-16">مميزات Quranfy</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-emerald-800/30 p-6 rounded-2xl text-center slide-in surrah-card"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center text-white mx-auto mb-4"
+            >
+              <i class="fas fa-microphone-alt text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">اشهر القراء</h3>
+            <p class="text-emerald-100">
+              اختر من بين عشرات القراء المشهورين حول العالم لتستمع إلى تلاواتهم
+              العذبة
+            </p>
+          </div>
+          <div
+            class="bg-emerald-800/30 p-6 rounded-2xl text-center slide-in surrah-card"
+            style="animation-delay: 0.2s"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center text-white mx-auto mb-4"
+            >
+              <i class="fas fa-book-open text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">كل سور القرآن الكريم</h3>
+            <p class="text-emerald-100">
+              تصفح جميع سور القرآن الكريم بسهولة ويسر مع إمكانية البحث والتصفية
+            </p>
+          </div>
+          <div
+            class="bg-emerald-800/30 p-6 rounded-2xl text-center slide-in surrah-card"
+            style="animation-delay: 0.4s"
+          >
+            <div
+              class="w-16 h-16 rounded-full bg-emerald-500 flex items-center justify-center text-white mx-auto mb-4"
+            >
+              <i class="fas fa-clock text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold mb-3">أوقات الصلاة</h3>
+            <p class="text-emerald-100">
+              احصل على أوقات الصلاة الدقيقة حسب موقعك مع تنبيهات قبل كل صلاة
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Readers Section -->
+    <section class="py-16 bg-gradient-to-b from-emerald-900 to-green-900">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">أشهر القراء</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div
+            class="bg-emerald-800/30 rounded-2xl p-4 text-center reader-card"
+          >
+            <div
+              class="w-24 h-24 rounded-full bg-emerald-600 mx-auto mb-4 overflow-hidden"
+            >
+              <img
+                src="ajmi.jpg"
+                alt="قارئ"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold">الشيخ أحمد العجمي</h3>
+          </div>
+          <div
+            class="bg-emerald-800/30 rounded-2xl p-4 text-center reader-card"
+          >
+            <div
+              class="w-24 h-24 rounded-full bg-emerald-600 mx-auto mb-4 overflow-hidden"
+            >
+              <img
+                src="alfasay.webp"
+                alt="قارئ"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold">الشيخ مشاري راشد</h3>
+          </div>
+          <div
+            class="bg-emerald-800/30 rounded-2xl p-4 text-center reader-card"
+          >
+            <div
+              class="w-24 h-24 rounded-full bg-emerald-600 mx-auto mb-4 overflow-hidden"
+            >
+              <img
+                src="ghamidi.jpg"
+                alt="قارئ"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold">الشيخ سعد الغامدي</h3>
+          </div>
+          <div
+            class="bg-emerald-800/30 rounded-2xl p-4 text-center reader-card"
+          >
+            <div
+              class="w-24 h-24 rounded-full bg-emerald-600 mx-auto mb-4 overflow-hidden"
+            >
+              <img
+                src="abdbasset.jpg"
+                alt="قارئ"
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <h3 class="text-xl font-bold">الشيخ عبد الباسط</h3>
+          </div>
+        </div>
+        <div class="text-center mt-10"></div>
+      </div>
+    </section>
+
+    <!-- App Download Section -->
+    <section class="py-16 bg-gradient-to-b from-green-900 to-emerald-900">
+      <div
+        class="container mx-auto px-4 flex flex-col md:flex-row items-center"
+      ></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-emerald-900 py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">Quranfy</h3>
+            <p class="text-emerald-200">
+              تطبيق Quranfy يمنحك تجربة فريدة للاستماع إلى القرآن بتلاوات عذبة
+              وواجهة سهلة الاستخدام
+            </p>
+          </div>
+          <div style="visibility: hidden">
+            <h3 class="text-xl font-bold mb-4">روابط سريعة</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-emerald-200 hover:text-white transition"
+                  >الرئيسية</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-emerald-200 hover:text-white transition"
+                  >القراء</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-emerald-200 hover:text-white transition"
+                  >السور</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-emerald-200 hover:text-white transition"
+                  >التفاسير</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">الدعم</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="mailto:benrabahazzedine@gmail.com"
+                  class="text-emerald-200 hover:text-white transition"
+                  >اتصل بنا</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">تابعنا</h3>
+            <div class="flex space-x-4 space-x-reverse">
+              <a
+                href="https://www.instagram.com/x_carlo_x_az?igsh=MWxvMXMyYnZ2NDk1OQ=="
+                target="_blank"
+                class="w-10 h-10 rounded-full bg-emerald-800 flex items-center justify-center text-white hover:bg-emerald-700 transition"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://discord.gg/DD5w9HQjs6"
+                target="_blank"
+                class="w-10 h-10 rounded-full bg-emerald-800 flex items-center justify-center text-white hover:bg-emerald-700 transition"
+              >
+                <i class="fab fa-discord"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="border-t border-emerald-800 mt-8 pt-8 text-center text-emerald-400"
+        >
+          <p>© 2026 Quranfy. جميع الحقوق محفوظة</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
