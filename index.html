@@ -135,20 +135,60 @@
           </div>
         </div>
         <div class="md:w-1/2 flex justify-center">
-          <div class="relative">
+          <div
+            class="relative max-w-[700px] w-full"
+            x-data="{
+              active: 0,
+              images: [
+                'software.png',
+                'software1.png',
+                'software2.png',
+                'software3.png'
+              ],
+              start() {
+                setInterval(() => {
+                  this.active = (this.active + 1) % this.images.length
+                }, 3500)
+              }
+            }"
+            x-init="start()"
+          >
+            <!-- Floating background circles -->
             <div
-              class="w-80 h-80 bg-emerald-800/30 rounded-full absolute -top-10 -right-10 floating"
+              class="absolute -top-24 -right-24 w-[500px] h-[500px] bg-emerald-800/30 rounded-full floating -z-10"
             ></div>
+
             <div
-              class="w-80 h-80 bg-emerald-700/20 rounded-full absolute -bottom-10 -left-10 floating"
+              class="absolute -bottom-24 -left-24 w-[500px] h-[500px] bg-emerald-700/20 rounded-full floating -z-10"
               style="animation-delay: 1.5s"
             ></div>
-            <div class="rounded-full">
+
+            <!-- Carousel Images -->
+            <template x-for="(image, index) in images" :key="index">
               <img
-                src="software.png"
-                alt="software"
-                class="w-full rounded-xl z-[999999] relative"
+                :src="image"
+                loading="eager"
+                alt=""
+                class="w-full h-auto rounded-3xl shadow-2xl transition-opacity duration-700 select-none pointer-events-none"
+                :class="active === index
+                  ? 'opacity-100 relative z-10'
+                  : 'opacity-0 absolute inset-0 z-0'"
               />
+            </template>
+
+            <!-- Dots -->
+            <div
+              class="absolute -bottom-6 left-1/2 -translate-x-1/2 flex gap-3"
+            >
+              <template x-for="(image, index) in images" :key="index">
+                <button
+                  class="w-3.5 h-3.5 rounded-full transition"
+                  :class="active === index
+                    ? 'bg-emerald-400 scale-110'
+                    : 'bg-emerald-700'"
+                  @click="active = index"
+                ></button>
+              </template>
             </div>
           </div>
         </div>
